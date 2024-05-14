@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "ImEghMkD0KP8UE60kAY9K47MtzFrnIjf0vgvqOypSZHKIAVgGXDLyr8uxJTKUjz7GV7l1CpLQdDotRLvfCZzvQ==",
+  "success": true,
+  "projectFilePath": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\94052\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\94052\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\94052\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\94052\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\94052\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\94052\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
