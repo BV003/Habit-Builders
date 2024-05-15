@@ -1,8 +1,14 @@
 <script setup>
+
+
+
+
 </script>
 
+
+
 <template>
-  <router-view></router-view>
+  <p>user</p>
 
 </template>
 

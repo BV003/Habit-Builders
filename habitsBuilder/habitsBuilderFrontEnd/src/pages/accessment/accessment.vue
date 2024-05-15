@@ -1,8 +1,9 @@
 <script setup>
+
 </script>
 
 <template>
-  <router-view></router-view>
+  <p>accessment</p>
 
 </template>
 
