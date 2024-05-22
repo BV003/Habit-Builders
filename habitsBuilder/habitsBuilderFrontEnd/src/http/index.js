@@ -1,15 +1,18 @@
 import axios from "axios";
+let baseURL = '/api'        //关键代码
 
-const http = axios.create({
-    baseURL : "http://127.0.0.1:8888",
+export const http = axios.create({
+    baseURL ,
     timeout : 5000,
     headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'
     },
   });
-  const get = (url,data) => {
-  http.get(url,data)
+
+  
+export const post = (url,data) => {
+  http.post(url,data)
     .then(function (response) {
       const data = response.data;
       console.log(data);
@@ -18,11 +21,12 @@ const http = axios.create({
       console.log("error");
     })
     .finally(function () {
-      // 总是会执行
+      
     });
 };
-const post = (url,data) => {
-  http.post(url,data)
+
+export const get = (url,data) => {
+  http.get(url,data)
     .then(function (response) {
       const data = response.data;
       console.log(data);
