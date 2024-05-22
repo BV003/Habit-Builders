@@ -31,8 +31,8 @@
 
   
   <div class="show-container">
-    <van-cell title="健康评测总分"  icon="smile-o" inset="true" size="large" >
-        <p style="margin:0" :style={color:bindcolor}>{{score}}</p>
+    <van-cell title="健康评测总分"  icon="smile-o" :inset="true" size="large" >
+        <p style="margin:0" >{{score}}</p>
     </van-cell>
   </div>
 
@@ -43,16 +43,14 @@
   <div class="button-container">
     <van-button plain round type="default" to="/accessment/history">查看历史记录</van-button>
   </div>
-
+<tabbar/>
 </template>
   
-  <script>
+  <script setup>
+import tabbar from "../../components/tabbar.vue";
 import { http } from '../../http/index.js';
 import { ref,onMounted } from 'vue';
 
-
-  export default {
-    setup() {
     // 创建一个响应式属性来存储分数
     const score = ref(null);
     // 从localStorage获取userid，如果不存在则定义一个默认值
@@ -97,24 +95,6 @@ import { ref,onMounted } from 'vue';
         score.value = 0; // 假设0表示获取分数失败
       }
     };
-
-
-    return {
-      score,
-      gettoday,
-      posttoday
-    };
-  },
-
-    data() {
-     return {
-    };
-    },
-    methods: {
-
-       
-    },
-  };
   </script>
 
 
