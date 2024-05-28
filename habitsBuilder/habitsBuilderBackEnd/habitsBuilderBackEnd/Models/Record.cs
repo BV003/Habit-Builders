@@ -3,7 +3,7 @@
     public class Record
     {
         public string RecordId { get; set; }
-        public string userId { get; set; }
+        public string UserId { get; set; }
         public DateTime dateTime { get; set; }
         public int sleepscore { get; set; }
         public int dietscore { get; set; }
@@ -13,7 +13,7 @@
         public Record(string userId) 
         {
             RecordId = Guid.NewGuid().ToString();
-            this.userId = userId;
+            this.UserId = userId;
             this.dateTime = DateTime.Now.Date;
             this.sleepscore = 0;
             this.dietscore = 0;
@@ -24,7 +24,7 @@
         public Record(string id,string userId, int sleepscore, int dietscore, int sportscore, int totlescore)
         {
             RecordId = id;
-            this.userId = userId;
+            this.UserId = userId;
             this.sleepscore = sleepscore;
             this.dietscore = dietscore;
             this.sportscore = sportscore;
@@ -34,7 +34,7 @@
         public Record(string id,string userId, DateTime dateTime, int sleepscore, int dietscore, int sportscore, int totlescore)
         {
             RecordId = id;
-            this.userId = userId;
+            this.UserId = userId;
             this.dateTime = dateTime;
             this.sleepscore = sleepscore;
             this.dietscore = dietscore;

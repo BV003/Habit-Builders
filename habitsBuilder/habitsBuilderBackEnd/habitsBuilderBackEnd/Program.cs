@@ -16,6 +16,8 @@ namespace habitsBuilderBackEnd
             String? connnectionString = builder.Configuration.GetConnectionString("DB");
             builder.Services.AddDbContext<RecordDbContext>(opt => opt.UseMySQL(connnectionString));
             builder.Services.AddScoped<RecordService>();
+            builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<PostService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

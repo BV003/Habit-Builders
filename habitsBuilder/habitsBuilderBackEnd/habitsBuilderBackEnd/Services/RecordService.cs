@@ -32,7 +32,7 @@ namespace habitsBuilderBackEnd.Services
 
             // 从数据库中获取所有匹配的记录
             var records = dbContext.Records
-                .Where(r => r.userId == userId && r.dateTime.Date == currentDateTime.Date)
+                .Where(r => r.UserId == userId && r.dateTime.Date == currentDateTime.Date)
                 .ToList();
 
             // 在内存中找到最新的记录
@@ -55,7 +55,7 @@ namespace habitsBuilderBackEnd.Services
 
             // 从数据库中获取所有匹配的记录
             var records = dbContext.Records
-                .Where(r => r.userId == userId && r.dateTime.Date == currentDateTime.Date)
+                .Where(r => r.UserId == userId && r.dateTime.Date == currentDateTime.Date)
                 .OrderByDescending(r => r.dateTime)
                 .ToList();
 
@@ -79,7 +79,7 @@ namespace habitsBuilderBackEnd.Services
 
             // 从数据库中获取所有匹配的记录
             var records = dbContext.Records
-                .Where(r => r.userId == userId && r.dateTime.Date == currentDateTime.Date)
+                .Where(r => r.UserId == userId && r.dateTime.Date == currentDateTime.Date)
                 .OrderByDescending(r => r.dateTime)
                 .ToList();
 
@@ -103,7 +103,7 @@ namespace habitsBuilderBackEnd.Services
 
             // 从数据库中获取所有匹配的记录
             var records = dbContext.Records
-                .Where(r => r.userId == userId && r.dateTime.Date == currentDateTime.Date)
+                .Where(r => r.UserId == userId && r.dateTime.Date == currentDateTime.Date)
                 .OrderByDescending(r => r.dateTime)
                 .ToList();
 
@@ -127,7 +127,7 @@ namespace habitsBuilderBackEnd.Services
 
             // 查询数据库，获取指定用户的分数记录
             var scoreRecords = dbContext.Records
-                .Where(r => r.userId == userId && r.dateTime.Date <= currentDateTime)
+                .Where(r => r.UserId == userId && r.dateTime.Date <= currentDateTime)
                 .GroupBy(r => r.dateTime.Date) // 按日期分组
                 .Select(group => new ScoreRecordDto
                 {
@@ -146,7 +146,7 @@ namespace habitsBuilderBackEnd.Services
             currentDateTime = currentDateTime.Date;
             // 从数据库中获取匹配的记录
             var record = dbContext.Records
-                .FirstOrDefault(r => r.userId == userId && r.dateTime.Date == currentDateTime.Date);
+                .FirstOrDefault(r => r.UserId == userId && r.dateTime.Date == currentDateTime.Date);
             if (record != null)
             {
                 // 如果找到了匹配的Record，直接返回
@@ -172,7 +172,7 @@ namespace habitsBuilderBackEnd.Services
             currentDateTime = currentDateTime.Date;
             // 从数据库中获取匹配的记录
             var record = dbContext.Records
-                .FirstOrDefault(r => r.userId == userId && r.dateTime.Date == currentDateTime.Date);
+                .FirstOrDefault(r => r.UserId == userId && r.dateTime.Date == currentDateTime.Date);
             if (record != null)
             {
                 if(record.sleepscore!=0&&record.sleepscore!=0&&record.dietscore!=0)
@@ -205,7 +205,7 @@ namespace habitsBuilderBackEnd.Services
             currentDateTime = currentDateTime.Date;
             // 从数据库中获取匹配的记录
             var record = dbContext.Records
-                .FirstOrDefault(r => r.userId == userId && r.dateTime.Date == currentDateTime.Date);
+                .FirstOrDefault(r => r.UserId == userId && r.dateTime.Date == currentDateTime.Date);
             if (record != null)
             {
                 int ans = starthour - endhour;
@@ -233,7 +233,7 @@ namespace habitsBuilderBackEnd.Services
 
             // 从数据库中获取匹配的记录
             var record = dbContext.Records
-                .FirstOrDefault(r => r.userId == userId && r.dateTime.Date == currentDateTime.Date);
+                .FirstOrDefault(r => r.UserId == userId && r.dateTime.Date == currentDateTime.Date);
             if (record != null)
             {
                 int ans = gram6 - gram1;
@@ -260,7 +260,7 @@ namespace habitsBuilderBackEnd.Services
             currentDateTime = currentDateTime.Date;
             // 从数据库中获取匹配的记录
             var record = dbContext.Records
-                .FirstOrDefault(r => r.userId == userId && r.dateTime.Date == currentDateTime.Date);
+                .FirstOrDefault(r => r.UserId == userId && r.dateTime.Date == currentDateTime.Date);
             if (record != null)
             {
                 int ans = time3 - time1;

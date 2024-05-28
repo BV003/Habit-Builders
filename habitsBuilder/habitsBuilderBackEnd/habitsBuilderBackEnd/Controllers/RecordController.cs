@@ -19,7 +19,7 @@ namespace habitsBuilderBackEnd.Controllers
         [HttpPost("test")]
         public ActionResult<string> test(string userid)
         {
-            User user = new User { userId =userid  };
+            User user = new User { UserId =userid  };
             if (recordService.AddUser(user))
             {
                 return Ok("修改成功");
