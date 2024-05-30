@@ -3,16 +3,16 @@ export default {
   data() {
     return {
       todos: [
-        {
-          id: 123123,
-          title: "内容1",
-          completed: false
-        },
-        {
-          id: 5678888,
-          title: "内容2",
-          completed: true
-        }
+        // {
+        //   id: 123123,
+        //   title: "内容1",
+        //   completed: false
+        // },
+        // {
+        //   id: 5678888,
+        //   title: "内容2",
+        //   completed: true
+        // }
       ],
       visibility: 'all'
     };
@@ -114,5 +114,5 @@ export default {
 </template>
 
 <style>
-@import "https://unpkg.com/todomvc-app-css@2.4.1/index.css";
+@import url('./tolist.css');
 </style>
