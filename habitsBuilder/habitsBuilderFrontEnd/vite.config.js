@@ -16,7 +16,7 @@ export default defineConfig({
         // 目标是后端服务器地址
         target: 'http://127.0.0.1:8888',
         // 重写请求路径，去掉 /api 前缀
-        rewrite: (path) => path.replace('^/api/', ''),
+        
         changeOrigin: true, // 改变原始请求的origin头为 target URL 的域名
         secure: false, // 如果是https的代理，需要设置secure为true
       },

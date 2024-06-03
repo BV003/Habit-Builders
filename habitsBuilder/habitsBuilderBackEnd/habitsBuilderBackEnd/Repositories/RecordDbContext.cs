@@ -13,15 +13,14 @@ namespace habitsBuilderBackEnd.Repositories
         public DbSet<User> Users { get; set; }
         public DbSet<UserFriend> UserFriends { get; set; }
         public DbSet<Record> Records { get; set; }
-
-
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostLike> PostLikes { get; set; }
+        public DbSet<PostPhoto> PostPhotos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserFriend>()
-                .HasKey(uf => new { uf.UserId, uf.FriendId });
+           .HasKey(uf => new { uf.UserId, uf.FriendId });
 
             modelBuilder.Entity<UserFriend>()
                 .HasOne<User>()
@@ -34,13 +33,23 @@ namespace habitsBuilderBackEnd.Repositories
                 .WithMany()
                 .HasForeignKey(uf => uf.FriendId)
                 .OnDelete(DeleteBehavior.Restrict);
-            modelBuilder.Entity<Post>()
-            .HasKey(p => p.PostId);
 
             modelBuilder.Entity<Post>()
-                .HasOne<User>()
+                .HasKey(p => p.PostId);
+
+            modelBuilder.Entity<Post>()
+                .HasOne(p => p.User) // Assuming Post entity has a User navigation property
                 .WithMany(u => u.Posts)
                 .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PostPhoto>()
+                .HasKey(pp => pp.PostPhotoId);
+
+            modelBuilder.Entity<PostPhoto>()
+                .HasOne(pp => pp.Post)
+                .WithMany(p => p.Photos)
+                .HasForeignKey(pp => pp.PostId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<PostLike>()

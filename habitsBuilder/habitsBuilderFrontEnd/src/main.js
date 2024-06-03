@@ -17,11 +17,17 @@ import { ActionSheet } from 'vant';
 import { TimePicker,Card,Grid,GridItem, PickerGroup,Picker,
     Popup,Calendar
 } from 'vant';
-
+import { Toast } from 'vant';
+import { Uploader } from 'vant';
+import { Checkbox, CheckboxGroup } from 'vant';
 
 
 const app =createApp(App)
 app.use(Button);
+app.use(Checkbox);
+app.use(CheckboxGroup);
+app.use(Uploader);
+app.use(Toast);
 app.use(Form);
 app.use(Field);
 app.use(Cell);

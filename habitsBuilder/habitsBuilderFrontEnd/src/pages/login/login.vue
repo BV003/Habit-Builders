@@ -12,7 +12,7 @@
         
   <van-cell-group inset>
     <van-field
-      v-model="username"
+      v-model="userId"
       name="用户名"
       label="用户名"
       placeholder="用户名"
@@ -42,30 +42,48 @@
   import { ref ,watch} from 'vue';
   import { state } from '../../state/state.js';
   import { useRouter } from 'vue-router';
+  import {http} from '../../http'
+  import { showLoadingToast, closeToast } from 'vant';
   
-  const username = ref('');
+  const userId = ref('');
   const password = ref('');
   const router = useRouter();
 
-  const onSubmit = (values) => {
-      console.log('submit', values);
-      login();
+  const onSubmit = async () => {
+    
+      try {
+        showLoadingToast({
+          message: '登陆中...',
+        });
+    const response = await http.post('/user/login', {
+      userId: userId.value,
+      password: password.value
+    })
+    
+    if (response.data.success) {
+      closeToast();
+      console.log('登录成功');
+      const user = {
+      userId: userId.value,
+      password: password.value,
+      };
+      state.setUser(user);
+      router.push('/');
+    } else {
+      closeToast();
+      console.log('用户名或密码错误')
+    }
+  } catch (error) {
+    closeToast();
+    console.log('登录失败，请稍后重试')
+    console.error(error)
+  }
     }
 
     const signup = () => {
       console.log('signup');
 
     }
-  
-  const login = () => {
-    // 模拟一个登录请求
-    const user = {
-      username: username.value,
-      password: password.value,
-    };
-    state.setUser(user);
-    router.push('/');
-  };
 
   const { width, height } = useWindowSize();
   </script>

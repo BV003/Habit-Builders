@@ -57,3 +57,4 @@ D:\programming_tools\vscode\vscode_code\habitsBuilder\habitsBuilderBackEnd\habit
 D:\programming_tools\vscode\vscode_code\habitsBuilder\habitsBuilderBackEnd\habitsBuilderBackEnd\obj\Debug\net8.0\habitsBuilderBackEnd.pdb
 D:\programming_tools\vscode\vscode_code\habitsBuilder\habitsBuilderBackEnd\habitsBuilderBackEnd\obj\Debug\net8.0\habitsBuilderBackEnd.genruntimeconfig.cache
 D:\programming_tools\vscode\vscode_code\habitsBuilder\habitsBuilderBackEnd\habitsBuilderBackEnd\obj\Debug\net8.0\ref\habitsBuilderBackEnd.dll
+D:\programming_tools\vscode\vscode_code\habitsBuilder\habitsBuilderBackEnd\habitsBuilderBackEnd\bin\Debug\net8.0\habitsBuilderBackEnd.staticwebassets.runtime.json

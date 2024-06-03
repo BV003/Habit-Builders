@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\uploads\\sfz1_638526835265393872.JPG",
+      "PackagePath": "staticwebassets\\uploads\\sfz1_638526835265393872.JPG"
+    },
+    {
+      "Id": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\uploads\\sfz2_638526835265443662.JPG",
+      "PackagePath": "staticwebassets\\uploads\\sfz2_638526835265443662.JPG"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.habitsBuilderBackEnd.props",
+      "PackagePath": "build\\habitsBuilderBackEnd.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.habitsBuilderBackEnd.props",
+      "PackagePath": "buildMultiTargeting\\habitsBuilderBackEnd.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.habitsBuilderBackEnd.props",
+      "PackagePath": "buildTransitive\\habitsBuilderBackEnd.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.habitsBuilderBackEnd.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

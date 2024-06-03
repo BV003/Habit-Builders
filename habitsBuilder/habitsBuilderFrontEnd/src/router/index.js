@@ -32,8 +32,6 @@ const routes=[
         component: () => import("../pages/accessment/history.vue"),
         meta: { requiresAuth: true },
     },
-
-
     
     {
         path:"/comunity",

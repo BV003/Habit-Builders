@@ -3,6 +3,7 @@ using habitsBuilderBackEnd.Repositories;
 using habitsBuilderBackEnd.Services;
 using habitsBuilderBackEnd.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity.Data;
 
 namespace habitsBuilderBackEnd.Controllers
 {
@@ -36,7 +37,7 @@ namespace habitsBuilderBackEnd.Controllers
             var userDTO = await userService.GetUserDTOAsync(id);
             if (userDTO == null)
             {
-                return NotFound();
+                return Ok(new { message = "用户不存在" });
             }
             return userDTO;
         }
@@ -46,13 +47,13 @@ namespace habitsBuilderBackEnd.Controllers
         {
             if (request == null || string.IsNullOrEmpty(request.NewPassword))
             {
-                return BadRequest("The newPassword field is required.");
+                return Ok(new { message = "密码修改错误" });
             }
 
             var user = await userService.UpdatePasswordAsync(id, request.NewPassword);
             if (user == null)
             {
-                return NotFound();
+                return Ok(new { message = "用户不存在" });
             }
             return Ok(new { message = "修改成功" });
         }
@@ -63,7 +64,7 @@ namespace habitsBuilderBackEnd.Controllers
             var result = await userService.AddFriendAsync(id, friendId);
             if (!result)
             {
-                return NotFound();
+                return Ok(new { message = "用户不存在" });
             }
             return Ok(new { message = "好友已添加" });
         }
@@ -74,9 +75,26 @@ namespace habitsBuilderBackEnd.Controllers
             var result = await userService.RemoveFriendAsync(id, friendId);
             if (!result)
             {
-                return NotFound();
+                return Ok(new { message = "用户不存在" });
             }
             return Ok(new { message = "好友已删除" });
         }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        {
+            var user = await userService.ValidateUserAsync(request.UserId, request.Password);
+            if (user == null)
+            {
+                return Ok(new { success = false, message = "用户名或密码错误" });
+            }
+
+            // 登录成功后
+            return Ok(new { success = true, message = "登录成功" });
+        }
+    }
+    public class LoginRequest
+    {
+        public string UserId { get; set; }
+        public string Password { get; set; }
     }
 }

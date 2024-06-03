@@ -1,11 +1,58 @@
 {
   "Version": 1,
-  "Hash": "ARXxbCn06WbJ4IkwWz6BocsNA9F+ydklHalcDQahabA=",
+  "Hash": "fG/AXmic09/YSXmoghiYUESXasrwaLTSlDwLnJxriy4=",
   "Source": "habitsBuilderBackEnd",
   "BasePath": "_content/habitsBuilderBackEnd",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "habitsBuilderBackEnd\\wwwroot",
+      "Source": "habitsBuilderBackEnd",
+      "ContentRoot": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\",
+      "BasePath": "_content/habitsBuilderBackEnd",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\uploads\\sfz1_638526835265393872.JPG",
+      "SourceId": "habitsBuilderBackEnd",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\",
+      "BasePath": "_content/habitsBuilderBackEnd",
+      "RelativePath": "uploads/sfz1_638526835265393872.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\sfz1_638526835265393872.JPG"
+    },
+    {
+      "Identity": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\uploads\\sfz2_638526835265443662.JPG",
+      "SourceId": "habitsBuilderBackEnd",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\",
+      "BasePath": "_content/habitsBuilderBackEnd",
+      "RelativePath": "uploads/sfz2_638526835265443662.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\sfz2_638526835265443662.JPG"
+    }
+  ]
 }

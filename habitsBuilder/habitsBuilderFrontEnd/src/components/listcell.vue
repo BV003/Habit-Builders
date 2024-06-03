@@ -1,6 +1,8 @@
 <script setup>
-import { ref, watch, toRefs } from 'vue'
-
+import { ref, watch, toRefs,onMounted } from 'vue'
+import imageGrid from "./imageGrid.vue";
+import {http} from '../http'
+import {state} from '../state/state.js'
 
 const props = defineProps({
   modelValue: {
@@ -20,26 +22,59 @@ watch(posts, (newValue) => {
   emit('update:modelValue', newValue)
 })
 
+const actions = ref([])
+
 const showPopover = ref(false)
+const userHasliked = ref(false)
+const postId = posts.value.postId
 
+const checkIfUserHasLiked = async () => {
+  try {
+    const response = await http.get(`/user/posts/posts/${postId}/hasliked`, { params: { userId: state.user.userId } });
+    userHasliked.value = response.data.hasLiked;
+    actions.value = [
+      { text: '喜欢', icon: userHasliked.value ? 'like' : 'like-o' },
+      { text: '分享', icon: 'share-o' }
+    ];
+  } catch (error) {
+    console.log('获取点赞状态失败，请稍后重试')
+  }
+}
 
-const actions =  ref([
-      { text: '喜欢', icon: 'like-o' },
-      { text: '分享', icon: 'share-o' },
-    ]);
+onMounted(() => {
+  checkIfUserHasLiked()
+})
 
-    const onSelect = (action) => {
-        if (action.text==='喜欢') {
-            if (action.icon==='like-o') {
-                action.icon='like'
-                posts.value.like++;
-            }else{
-                action.icon='like-o'
-                posts.value.like--;
-            }
-            
-        }
-    };
+const onSelect = async (action) => {
+  if (action.text === '喜欢') {
+    if (action.icon === 'like-o') {
+      try {
+        await http.post(`/user/posts/posts/${postId}/like`, {
+          userId: state.user.userId
+        })
+        userHasliked.value = true
+        posts.value.like++;
+      } catch (error) {
+        console.log('点赞失败，请稍后重试')
+      }
+    } else {
+      try {
+        await http.post(`/user/posts/posts/${postId}/unlike`, {
+          userId: state.user.userId
+        })
+        userHasliked.value = false;
+        posts.value.like--;
+      } catch (error) {
+        console.log('取消点赞失败，请稍后重试')
+      }
+    }
+    // 更新 actions 的状态
+    actions.value = [
+      { text: '喜欢', icon: userHasliked.value ? 'like' : 'like-o' },
+      { text: '分享', icon: 'share-o' }
+    ]
+  }
+}
 </script>
 
 <template>
@@ -56,6 +91,7 @@ const actions =  ref([
             <div class="content">
                 <div class="usern"><div class="usern1">{{posts.name}}</div><div class="usern2"><van-icon name="fire-o" size="18px" color="#898989" />   {{posts.like}}</div></div>
                 <div class="user">{{posts.text}}</div>
+                <div class="userimg"><image-grid :img-urls="posts.imgUrls" /></div>
                 <div class="details-container">
                     <div class="time">{{posts.time}}</div>
                     <div class="commit">
@@ -116,6 +152,12 @@ const actions =  ref([
   }
 
   .user {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #000000;
+    font-weight:400;
+  }
+  .userimg {
     margin-top: 10px;
     font-size: 16px;
     color: #000000;

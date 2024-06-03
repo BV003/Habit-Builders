@@ -89,5 +89,13 @@ namespace habitsBuilderBackEnd.Services
 
             return userDTO;
         }
+        public async Task<User> ValidateUserAsync(string userId, string password)
+        {
+            // 使用哈希函数或其他方法验证密码
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.UserId == userId && u.Password == password);
+
+            return user;
+        }
     }
 }
