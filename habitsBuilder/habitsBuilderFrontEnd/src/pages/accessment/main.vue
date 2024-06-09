@@ -50,17 +50,17 @@
 import tabbar from "../../components/tabbar.vue";
 import { http } from '../../http/index.js';
 import { ref,onMounted } from 'vue';
+import { state } from '../../state/state.js';
 
     // 创建一个响应式属性来存储分数
     const score = ref(null);
-    // 从localStorage获取userid，如果不存在则定义一个默认值
-    let userid = "1";
+    // 从localStorage获取userid
     // 定义一个方法来获取今天的分数
     const gettoday = async () => {
       const url = '/accessment/gettoday';
       try {
         // 调用后端API
-        const response = await http.get(url,{ params: { userid } });
+        const response = await http.get(url,{ params: { userid: state.user.userId } });
         // 将返回的分数设置到score属性中
         score.value = response.data;
         if(score.value==0)
@@ -81,7 +81,7 @@ import { ref,onMounted } from 'vue';
       const url = '/accessment/posttoday';
       try {
         // 调用后端API
-        const response = await http.post(url,{ userid: '2' }
+        const response = await http.post(url,{ userid: state.user.userId }
       );
         // 将返回的分数设置到score属性中
         score.value = response.data;

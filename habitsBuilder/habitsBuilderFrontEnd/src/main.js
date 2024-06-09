@@ -21,12 +21,14 @@ import { Toast } from 'vant';
 import { Uploader } from 'vant';
 import { Checkbox, CheckboxGroup } from 'vant';
 import { Dialog } from 'vant';
-import { SwipeCell } from 'vant';
+import { SwipeCell,Radio,RadioGroup } from 'vant';
 
 
 const app =createApp(App)
 app.use(Button);
 app.use(SwipeCell);
+app.use(Radio);
+app.use(RadioGroup);
 app.use(Dialog);
 app.use(Checkbox);
 app.use(CheckboxGroup);

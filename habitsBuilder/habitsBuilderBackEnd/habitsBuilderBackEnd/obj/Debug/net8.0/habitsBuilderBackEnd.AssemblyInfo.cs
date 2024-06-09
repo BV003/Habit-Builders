@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("habitsBuilderBackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0c978ba79389e7afc1b563282c3714a274f4f52")]
 [assembly: System.Reflection.AssemblyProductAttribute("habitsBuilderBackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("habitsBuilderBackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

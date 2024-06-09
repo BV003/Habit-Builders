@@ -95,6 +95,7 @@ namespace habitsBuilderBackEnd.Controllers
                 return BadRequest("Invalid request.");
             }
             DateTime currentDateTime = DateTime.UtcNow;
+            Console.WriteLine("1done");
             return Ok(recordService.Calculatesleep(requestDto.UserId, currentDateTime, requestDto.StartHour, requestDto.StartMinute, requestDto.EndHour, requestDto.EndMinute));
         }
 

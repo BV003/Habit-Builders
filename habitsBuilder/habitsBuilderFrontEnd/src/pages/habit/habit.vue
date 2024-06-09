@@ -4,12 +4,16 @@ import { ref, computed, onBeforeUpdate, watch } from 'vue';
 import { showConfirmDialog } from 'vant';
 import { onMounted } from 'vue';
 import { state } from '../../state/state.js';
+import { useRouter } from 'vue-router';
 import axios from 'axios';
 
+const router = useRouter();
+const onClickLeft = async() =>{
+  router.push('/habit/ai');
+};
 onMounted(() => {
   getCardData();
 });
-
 const show = ref(false);
 // const cards = ref([
 //   { id:0,description: '跑步5公里', category: '类型1', checklist: ['晨跑30分钟', '早餐-牛油果三明治', '对接商务工作'],checklistStatus:[false,false,false],checkDays:[0,0,0]},
@@ -184,7 +188,7 @@ const getCardData = async () => {
 </script>
 
 <template>
-  <van-nav-bar title="打卡记录" fixed>
+  <van-nav-bar title="打卡记录"   left-text="AI辅助"  @click-left="onClickLeft" >
     <template #right>
       <van-icon name="plus" size="18" color="black" @click="onClick" />
     </template>

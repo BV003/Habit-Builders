@@ -38,7 +38,7 @@
   <script>
 import { ref,onMounted } from 'vue';
 import { http } from '../../http';
-
+import { state } from '../../state/state.js';
 
   export default {
     setup() {
@@ -391,13 +391,12 @@ import { http } from '../../http';
 
     const score = ref(null);
     // 从localStorage获取userid，如果不存在则定义一个默认值
-    let userid = "1";
     // 定义一个方法来获取今天的分数
     const getdiet = async () => {
       const url = '/accessment/getdiet';
       try {
         // 调用后端API
-        const response = await http.get(url,{ params: { userid } });
+        const response = await http.get(url,{ params: { userid:state.user.userId } });
         // 将返回的分数设置到score属性中
         score.value = response.data;
         if(score.value==0)
@@ -424,6 +423,12 @@ import { http } from '../../http';
 
     const postdiet = async () => {
       const url = '/accessment/postdiet';
+        gram1.value=0;
+        gram2.value=0;
+        gram3.value=0;
+        gram4.value=0;
+        gram5.value=0;
+        gram6.value=0;
 
       breitems.value.forEach(item => {
       const value = parseInt(item.value, 10); // 将value从字符串转换为数字
@@ -447,7 +452,7 @@ import { http } from '../../http';
       try {
         // 调用后端API
         const response = await http.post(url,{ 
-          userid: '2',
+          userid: state.user.userId,
           gram1:gram1.value,
           gram2:gram2.value,
           gram3:gram3.value,

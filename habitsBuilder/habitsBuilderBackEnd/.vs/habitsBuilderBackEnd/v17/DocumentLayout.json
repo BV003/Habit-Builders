@@ -1,14 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\",
+  "WorkspaceRootPath": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|d:\\programming_tools\\vscode\\vscode_code\\habitsbuilder\\habitsbuilderbackend\\habitsbuilderbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsbuilderbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|solutionrelative:habitsbuilderbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|d:\\programming_tools\\vscode\\vscode_code\\habitsbuilder\\habitsbuilderbackend\\habitsbuilderbackend\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsbuilderbackend\\repositories\\recorddbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|solutionrelative:habitsbuilderbackend\\repositories\\recorddbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsbuilderbackend\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|solutionrelative:habitsbuilderbackend\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|c:\\users\\lwq_0\\desktop\\habit-builders\\habitsbuilder\\habitsbuilderbackend\\habitsbuilderbackend\\models\\record.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|solutionrelative:habitsbuilderbackend\\models\\record.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|c:\\users\\lwq_0\\desktop\\habit-builders\\habitsbuilder\\habitsbuilderbackend\\habitsbuilderbackend\\models\\habitcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|solutionrelative:habitsbuilderbackend\\models\\habitcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|c:\\users\\lwq_0\\desktop\\habit-builders\\habitsbuilder\\habitsbuilderbackend\\habitsbuilderbackend\\services\\recordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|solutionrelative:habitsbuilderbackend\\services\\recordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsbuilderbackend\\controllers\\recordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|solutionrelative:habitsbuilderbackend\\controllers\\recordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsbuilderbackend\\dto\\timerangerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|solutionrelative:habitsbuilderbackend\\dto\\timerangerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsbuilderbackend\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B76A4A68-89D2-4F30-ACC9-5E7C1434A034}|habitsBuilderBackEnd\\habitsBuilderBackEnd.csproj|solutionrelative:habitsbuilderbackend\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,34 +46,120 @@
       "DocumentGroups": [
         {
           "DockedWidth": 250,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HabitCard.cs",
+              "DocumentMoniker": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Models\\HabitCard.cs",
+              "RelativeDocumentMoniker": "habitsBuilderBackEnd\\Models\\HabitCard.cs",
+              "ToolTip": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Models\\HabitCard.cs",
+              "RelativeToolTip": "habitsBuilderBackEnd\\Models\\HabitCard.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T02:18:09.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Record.cs",
+              "DocumentMoniker": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Models\\Record.cs",
+              "RelativeDocumentMoniker": "habitsBuilderBackEnd\\Models\\Record.cs",
+              "ToolTip": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Models\\Record.cs",
+              "RelativeToolTip": "habitsBuilderBackEnd\\Models\\Record.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T02:13:32.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TimeRangeRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\DTO\\TimeRangeRequestDto.cs",
+              "RelativeDocumentMoniker": "habitsBuilderBackEnd\\DTO\\TimeRangeRequestDto.cs",
+              "ToolTip": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\DTO\\TimeRangeRequestDto.cs",
+              "RelativeToolTip": "habitsBuilderBackEnd\\DTO\\TimeRangeRequestDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T02:01:32.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RecordController.cs",
+              "DocumentMoniker": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Controllers\\RecordController.cs",
+              "RelativeDocumentMoniker": "habitsBuilderBackEnd\\Controllers\\RecordController.cs",
+              "ToolTip": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Controllers\\RecordController.cs",
+              "RelativeToolTip": "habitsBuilderBackEnd\\Controllers\\RecordController.cs",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAGIAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T01:43:29.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RecordService.cs",
+              "DocumentMoniker": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Services\\RecordService.cs",
+              "RelativeDocumentMoniker": "habitsBuilderBackEnd\\Services\\RecordService.cs",
+              "ToolTip": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Services\\RecordService.cs",
+              "RelativeToolTip": "habitsBuilderBackEnd\\Services\\RecordService.cs",
+              "ViewState": "AQIAANcAAAAAAAAAAAASwOcAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T01:28:39.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RecordDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Repositories\\RecordDbContext.cs",
+              "RelativeDocumentMoniker": "habitsBuilderBackEnd\\Repositories\\RecordDbContext.cs",
+              "ToolTip": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Repositories\\RecordDbContext.cs",
+              "RelativeToolTip": "habitsBuilderBackEnd\\Repositories\\RecordDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T01:43:25.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "habitsBuilderBackEnd\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Services\\UserService.cs",
+              "RelativeToolTip": "habitsBuilderBackEnd\\Services\\UserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-09T01:28:39.233Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Program.cs",
               "RelativeDocumentMoniker": "habitsBuilderBackEnd\\Program.cs",
-              "ToolTip": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Program.cs",
+              "ToolTip": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Program.cs",
               "RelativeToolTip": "habitsBuilderBackEnd\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAARAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-08T22:15:10.688Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CardController.cs",
-              "DocumentMoniker": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Controllers\\CardController.cs",
+              "DocumentMoniker": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Controllers\\CardController.cs",
               "RelativeDocumentMoniker": "habitsBuilderBackEnd\\Controllers\\CardController.cs",
-              "ToolTip": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Controllers\\CardController.cs",
+              "ToolTip": "C:\\Users\\lwq_0\\Desktop\\Habit-Builders\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\Controllers\\CardController.cs",
               "RelativeToolTip": "habitsBuilderBackEnd\\Controllers\\CardController.cs",
-              "ViewState": "AQIAAKoAAAAAAAAAAAAIwLwAAAAfAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFkAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-08T22:06:52.283Z",
               "EditorCaption": ""

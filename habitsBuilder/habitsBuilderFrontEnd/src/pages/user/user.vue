@@ -200,16 +200,18 @@ const addFriend=async () => {
           </van-list>
         </div>
       </van-tab>
-      <van-tab title="奖牌">
+      <!--<van-tab title="奖牌">
         <div class="tab-content">
-          <!-- 奖牌内容 -->
+           奖牌内容 
         </div>
-      </van-tab>
+      </van-tab>-->
+<!--
       <van-tab title="打卡">
         <div class="tab-content">
-          <!-- 打卡内容 -->
         </div>
-      </van-tab>
+      </van-tab>-->
+
+
       <van-tab title="喜欢">
         <div class="tab-content">
           <van-list

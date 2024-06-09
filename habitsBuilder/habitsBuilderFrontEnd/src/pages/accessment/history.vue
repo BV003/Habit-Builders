@@ -15,6 +15,7 @@
 <script>
 import { http } from '../../http/index.js';
 import { ref,onMounted } from 'vue';
+import { state } from '../../state/state.js';
 
   export default {
     setup()
@@ -23,13 +24,11 @@ import { ref,onMounted } from 'vue';
 
       const scores = ref([]);
       const scoresMap=ref(new Map());
-      
-      let userid = "1";
       const gethistory = async () => {
       const url = '/accessment/gethistory';
       try {
         // 调用后端API
-        const response = await http.get(url,{ params: { userid } });        
+        const response = await http.get(url,{ params: { userid:state.user.userId } });        
         response.data.forEach(item => {
       const dateObject = new Date(item.date);
       // 使用Date对象的getFullYear、getMonth、getDate方法来格式化日期

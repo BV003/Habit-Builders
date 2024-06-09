@@ -34,7 +34,7 @@
 <script>
 import { ref,onMounted } from 'vue';
 import { http } from '../../http';
-
+import { state } from '../../state/state.js';
 
   export default {
     setup() {
@@ -130,13 +130,12 @@ import { http } from '../../http';
 
     const score = ref(null);
     // 从localStorage获取userid，如果不存在则定义一个默认值
-    let userid = "1";
     // 定义一个方法来获取今天的分数
     const getsport = async () => {
       const url = '/accessment/getsport';
       try {
         // 调用后端API
-        const response = await http.get(url,{ params: { userid } });
+        const response = await http.get(url,{ params: { userid:state.user.userId  } });
         // 将返回的分数设置到score属性中
         score.value = response.data;
         if(score.value==0)
@@ -159,6 +158,9 @@ import { http } from '../../http';
     const postsport = async () => {
       const url = '/accessment/postsport';
 
+      time1.value=0;
+      time2.value=0;
+      time3.value=0;
       items.value.forEach(item => {
       const value = parseInt(item.value, 10); // 将value从字符串转换为数字
       const time = parseInt(item.time, 10);  // 将gram从字符串转换为数字
@@ -171,11 +173,12 @@ import { http } from '../../http';
       } else if (value === 3) {
         time3.value += time;
       } 
+
     });
       try {
         // 调用后端API
         const response = await http.post(url,{ 
-          userid: '2',
+          userid: state.user.userId ,
           time1:time1.value,
           time2:time2.value,
           time3:time3.value,

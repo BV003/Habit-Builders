@@ -59,6 +59,12 @@ const routes=[
         name:"login",
         component: () => import("../pages/login/login.vue"),
 
+    }, 
+    {
+        path:"/habit/ai",
+        name:"ai",
+        component: () => import("../pages/habit/ai.vue"),
+
     },
 ];
 

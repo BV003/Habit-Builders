@@ -31,6 +31,7 @@
 import { ref,onMounted } from 'vue';
 import { showToast } from 'vant';
 import { http } from '../../http';
+import { state } from '../../state/state.js';
 
   export default {
     setup() {
@@ -47,13 +48,12 @@ import { http } from '../../http';
 
     const score = ref(null);
     // 从localStorage获取userid，如果不存在则定义一个默认值
-    let userid = "1";
     // 定义一个方法来获取今天的分数
     const getsleep = async () => {
       const url = '/accessment/getsleep';
       try {
         // 调用后端API
-        const response = await http.get(url,{ params: { userid } });
+        const response = await http.get(url,{ params: { userid:state.user.userId } });
         // 将返回的分数设置到score属性中
         score.value = response.data;
         if(score.value==0)
@@ -72,7 +72,7 @@ import { http } from '../../http';
       try {
         // 调用后端API
         const response = await http.post(url,{ 
-          userid: '2',
+          userid: state.user.userId ,
           StartHour:startTime.value[0],
           StartMinute:startTime.value[1],
           EndHour:endTime.value[0],
