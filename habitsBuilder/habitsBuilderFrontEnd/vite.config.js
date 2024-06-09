@@ -9,6 +9,8 @@ export default defineConfig({
   //   port:"5173",
   // },
   server: {
+    // host:"172.20.10.4",
+    // port:"5173",
     // 其他服务器配置...
     proxy: {
       // 捕获所有以 /api 开头的请求

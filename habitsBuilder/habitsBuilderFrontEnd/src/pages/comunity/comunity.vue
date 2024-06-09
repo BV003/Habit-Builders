@@ -32,7 +32,7 @@ import { state } from '../../state/state.js';
     };
     const getPosts = async () => {
       try {
-    const response = await axios.get(`/api/user/posts/${userId}/allposts`);
+    const response = await axios.get(`/api/posts/${userId}/allposts`);
     if (response.data.hasOwnProperty('message')) {
     }else{
       console.log(response.data);
@@ -84,7 +84,7 @@ const onPublish = async () => {
     for (let [key, value] of formData.entries()) {
     console.log(key, value);
   }
-    const response = await axios.post(`/api/user/posts/${userId}/posts`, formData, {
+    const response = await axios.post(`/api/posts/${userId}/posts`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

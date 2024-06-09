@@ -16,6 +16,8 @@ namespace habitsBuilderBackEnd.Repositories
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostLike> PostLikes { get; set; }
         public DbSet<PostPhoto> PostPhotos { get; set; }
+        public DbSet<HabitCard> HabitCards { get; set; }
+        public DbSet<ChecklistItem> ChecklistItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -66,6 +68,19 @@ namespace habitsBuilderBackEnd.Repositories
                 .WithMany()
                 .HasForeignKey(pl => pl.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<User>()
+            .HasKey(u => u.UserId);
+
+            modelBuilder.Entity<HabitCard>()
+                .HasOne(h => h.User)
+                .WithMany(u => u.HabitCards)
+                .HasForeignKey(h => h.UserId);
+
+            modelBuilder.Entity<ChecklistItem>()
+                .HasOne(c => c.Card)
+                .WithMany(h => h.ChecklistItems)
+                .HasForeignKey(c => c.CardId);
         }
 
     }

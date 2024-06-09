@@ -20,10 +20,14 @@ import { TimePicker,Card,Grid,GridItem, PickerGroup,Picker,
 import { Toast } from 'vant';
 import { Uploader } from 'vant';
 import { Checkbox, CheckboxGroup } from 'vant';
+import { Dialog } from 'vant';
+import { SwipeCell } from 'vant';
 
 
 const app =createApp(App)
 app.use(Button);
+app.use(SwipeCell);
+app.use(Dialog);
 app.use(Checkbox);
 app.use(CheckboxGroup);
 app.use(Uploader);

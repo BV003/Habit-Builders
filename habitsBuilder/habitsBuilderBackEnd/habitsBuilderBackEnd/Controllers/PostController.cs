@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace habitsBuilderBackEnd.Controllers
 {
-    [Route("api/user/posts")]
+    [Route("api/posts")]
     public class PostController : ControllerBase
     {
         private readonly PostService postService;
@@ -88,6 +88,17 @@ namespace habitsBuilderBackEnd.Controllers
                 return Ok(new { message = "帖子不存在或不属于该用户" });
             }
             return Ok(new { message = "帖子删除成功" });
+        }
+        // 获取用户点赞过的所有帖子
+        [HttpGet("{id}/likedPosts")]
+        public async Task<ActionResult<List<PostDTO>>> GetUserLikedPosts(string id)
+        {
+            var posts = await postService.GetUserLikedPostsAsync(id);
+            if (posts == null || posts.Count == 0)
+            {
+                return Ok(new { message = "用户没有点赞过任何帖子" });
+            }
+            return posts;
         }
     }
 

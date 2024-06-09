@@ -9,7 +9,10 @@ namespace habitsBuilderBackEnd
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            //builder.WebHost.ConfigureKestrel(options =>
+            //{
+            //    options.ListenAnyIP(8888); // 监听所有IP的8888端口
+            //});
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

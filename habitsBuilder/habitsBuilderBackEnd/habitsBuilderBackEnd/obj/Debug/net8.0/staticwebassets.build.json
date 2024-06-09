@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fG/AXmic09/YSXmoghiYUESXasrwaLTSlDwLnJxriy4=",
+  "Hash": "9sTzp/YnE0dRluAEBQp1KrazHt9znK3UU/lcWJg5Boo=",
   "Source": "habitsBuilderBackEnd",
   "BasePath": "_content/habitsBuilderBackEnd",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\uploads\\sfz1_638526835265393872.JPG",
+      "Identity": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\uploads\\38DFF2A308C209BDB01E62008FBD3425_638535094061846541.jpg",
       "SourceId": "habitsBuilderBackEnd",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\",
       "BasePath": "_content/habitsBuilderBackEnd",
-      "RelativePath": "uploads/sfz1_638526835265393872.JPG",
+      "RelativePath": "uploads/38DFF2A308C209BDB01E62008FBD3425_638535094061846541.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -33,15 +33,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\sfz1_638526835265393872.JPG"
+      "OriginalItemSpec": "wwwroot\\uploads\\38DFF2A308C209BDB01E62008FBD3425_638535094061846541.jpg"
     },
     {
-      "Identity": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\uploads\\sfz2_638526835265443662.JPG",
+      "Identity": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\uploads\\5FD7557606C3FD23AA1A5651CDB097FE_638535094839451693.jpg",
       "SourceId": "habitsBuilderBackEnd",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\programming_tools\\vscode\\vscode_code\\habitsBuilder\\habitsBuilderBackEnd\\habitsBuilderBackEnd\\wwwroot\\",
       "BasePath": "_content/habitsBuilderBackEnd",
-      "RelativePath": "uploads/sfz2_638526835265443662.JPG",
+      "RelativePath": "uploads/5FD7557606C3FD23AA1A5651CDB097FE_638535094839451693.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,7 +52,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\sfz2_638526835265443662.JPG"
+      "OriginalItemSpec": "wwwroot\\uploads\\5FD7557606C3FD23AA1A5651CDB097FE_638535094839451693.jpg"
     }
   ]
 }

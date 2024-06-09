@@ -12,6 +12,7 @@ namespace habitsBuilderBackEnd.Models
         public string Password { get; set; }
         public List<UserFriend> Friends { get; set; } = new List<UserFriend>();
         public List<Post> Posts { get; set; } = new List<Post>();
+        public List<HabitCard> HabitCards { get; set; } = new List<HabitCard>();
 
 
         public User(string userId)

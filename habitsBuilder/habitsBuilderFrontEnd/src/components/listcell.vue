@@ -30,7 +30,7 @@ const postId = posts.value.postId
 
 const checkIfUserHasLiked = async () => {
   try {
-    const response = await http.get(`/user/posts/posts/${postId}/hasliked`, { params: { userId: state.user.userId } });
+    const response = await http.get(`/posts/posts/${postId}/hasliked`, { params: { userId: state.user.userId } });
     userHasliked.value = response.data.hasLiked;
     actions.value = [
       { text: '喜欢', icon: userHasliked.value ? 'like' : 'like-o' },
@@ -49,7 +49,7 @@ const onSelect = async (action) => {
   if (action.text === '喜欢') {
     if (action.icon === 'like-o') {
       try {
-        await http.post(`/user/posts/posts/${postId}/like`, {
+        await http.post(`/posts/posts/${postId}/like`, {
           userId: state.user.userId
         })
         userHasliked.value = true
@@ -59,7 +59,7 @@ const onSelect = async (action) => {
       }
     } else {
       try {
-        await http.post(`/user/posts/posts/${postId}/unlike`, {
+        await http.post(`/posts/posts/${postId}/unlike`, {
           userId: state.user.userId
         })
         userHasliked.value = false;

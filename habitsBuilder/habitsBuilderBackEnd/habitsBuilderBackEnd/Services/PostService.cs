@@ -185,5 +185,27 @@ namespace habitsBuilderBackEnd.Services
             await _context.SaveChangesAsync();
             return true;
         }
+        public async Task<List<PostDTO>> GetUserLikedPostsAsync(string userId)
+        {
+            var likedPosts = await _context.PostLikes
+                .Where(pl => pl.UserId == userId)
+                .Include(pl => pl.Post)
+                .ThenInclude(p => p.Photos)
+                .Include(pl => pl.Post)
+                .ThenInclude(p => p.Likes)
+                .Select(pl => new PostDTO
+                {
+                    PostId = pl.Post.PostId,
+                    Content = pl.Post.Content,
+                    PostedAt = pl.Post.PostedAt,
+                    Likes = pl.Post.Likes.Count,
+                    Photos = pl.Post.Photos.Select(photo => photo.Url).ToList(),
+                    UserId = pl.Post.UserId,
+                    UserName = pl.Post.User.UserName // Assuming User entity has UserName property
+                })
+                .ToListAsync();
+
+            return likedPosts;
+        }
     }
 }

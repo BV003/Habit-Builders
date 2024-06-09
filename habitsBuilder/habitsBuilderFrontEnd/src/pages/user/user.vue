@@ -1,86 +1,162 @@
 <script setup>
-import { ref } from "vue";
+import { ref,onMounted,computed } from "vue";
 import tabbar from "../../components/tabbar.vue";
 import listcell from "../../components/listcell.vue";
+import { state } from '../../state/state.js';
+import axios from 'axios';
+import { showConfirmDialog } from 'vant';
+
 const onEditProfile=()=> {
-      // 编辑资料点击事件
-      console.log('编辑资料');
+  showConfirmDialog({
+    title: '个人介绍',
+    message: `<input id="custom-input" type="text" style="border: none; width: 100%; height: 100%; box-sizing: border-box; text-align: center;" placeholder="点击输入内容" />` ,
+    allowHtml: true,
+  }).then(() => {
+    var inputValue=document.getElementById('custom-input').value;
+    console.log(inputValue);
+    if (inputValue) {
+      introduce.value=inputValue;
+      state.setIntroduce(inputValue);
+    } else {
+    }
+    document.getElementById('custom-input').value='';
+  }).catch(() => {
+    document.getElementById('custom-input').value='';
+  });
     };
+const introduce=ref('');
 const activeNames = ref(['1']);
 const activeTab=ref(0);
-const postsme = ref([
-      {
-        imgsrc: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-        time: '5/18 17:50',
-        name: 'Chen',
-        text: '如果你正在使用一个前端框架或库，确保你遵循该框架或库的指导原则来正确使用 ARIA 角色。有时，框架或库会自动处理 ARIA 角色和属性，因此手动添加可能会引起冲突。',
-        like: 2,
-        imgUrls:[
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-        ]
-      },
-      {
-        imgsrc: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-        time: '5/19 14:30',
-        name: 'Li',
-        text: '这是一段示例文本，用于展示如何使用Vue 3和Vant库。',
-        like: 3,
-        imgUrls:[
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-        ]
-      },
-    ])
+const postsme = ref([]);
 
-    const loading = ref(false);
-    const finished = ref(false);
-    const refreshing = ref(false);
-    const onLoad = () => {
-      console.log("onload");
-      loading.value = false;
-      refreshing.value=false;
-      finished.value = true;
+const loadingMe = ref(false);
+const finishedMe = ref(false);
+const onLoadMe = () => {
+  console.log("onload");
+  loadingMe.value = false;
+  finishedMe.value = true;
+};
+const loadingLike = ref(false);
+const finishedLike = ref(false);
+const onLoadLike = () => {
+  console.log("onload");
+  loadingLike.value = false;
+  finishedLike.value = true;
+};
 
-    };
+const postslike = ref([]);
 
+onMounted(() => {
+  getUser();
+  getPostsme();
+  getCardData();
+  introduce.value=state.introduce;
+  getPostslike();
+});
+const userId=state.user.userId;
+const userName=ref(0);
+const likeNum=computed(() => {
+      return postsme.value.reduce((sum, post) => sum + post.like, 0);
+});
+const postNum=computed(() => {
+      return postsme.value.length;
+});
+const dayNum=computed(() => {
+      return cards.value.reduce((sum, card) => sum + card.checkDays.reduce((cardSum, day) => cardSum + day, 0), 0);
+});
+const cards = ref([]);
+const friendNum=ref(0);
+const getUser = async ()=>{
+  try {
+    const response = await axios.get(`/api/user/${userId}`);
+    userName.value=response.data.userName;
+    friendNum.value=response.data.friends.length;
+  } catch (error) {
+    console.error('获取失败',error);
+  }
+};
+const getPostsme = async () => {
+      try {
+    const response = await axios.get(`/api/posts/${userId}/posts`);
+    if (response.data.hasOwnProperty('message')) {
+    }else{
+      console.log(response.data);
+      const fetchedPosts = response.data.map(post => ({
+      postId: post.postId,
+      imgsrc: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg', // 默认图片
+      time: new Date(post.postedAt).toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }),
+      name: post.userName, // 根据实际需求修改
+      text: post.content,
+      like: post.likes,
+      imgUrls: post.photos.map(photo => `http://127.0.0.1:8888${photo}`)
+    }));
+    postsme.value = fetchedPosts;
+    }
+  } catch (error) {
+    console.log('Failed to fetch posts:');
+  }
+};
+const getPostslike = async () => {
+      try {
+    const response = await axios.get(`/api/posts/${userId}/likedPosts`);
+    if (response.data.hasOwnProperty('message')) {
+    }else{
+      console.log(response.data);
+      const fetchedPosts = response.data.map(post => ({
+      postId: post.postId,
+      imgsrc: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg', // 默认图片
+      time: new Date(post.postedAt).toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }),
+      name: post.userName, // 根据实际需求修改
+      text: post.content,
+      like: post.likes,
+      imgUrls: post.photos.map(photo => `http://127.0.0.1:8888${photo}`)
+    }));
+    postslike.value = fetchedPosts;
+    }
+  } catch (error) {
+    console.log('Failed to fetch posts:');
+  }
+};
+//获取数据
+const getCardData = async () => {
+  try {
+    const response = await axios.get(`/api/card/${state.user.userId}`);
+    console.log(response.data);
+    cards.value=response.data;
+  } catch (error) {
+    console.error('获取失败',error);
+  }
+};
 
-    const postslike = ref([
-      {
-        imgsrc: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-        time: '5/18 17:50',
-        name: 'Chen',
-        text: '如果你正在使用一个前端框架或库，确保你遵循该框架或库的指导原则来正确使用 ARIA 角色。有时，框架或库会自动处理 ARIA 角色和属性，因此手动添加可能会引起冲突。',
-        like: 2,
-        imgUrls:[
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-        ]
-      },
-      {
-        imgsrc: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-        time: '5/19 14:30',
-        name: 'Li',
-        text: '这是一段示例文本，用于展示如何使用Vue 3和Vant库。',
-        like: 3,
-        imgUrls:[
-          'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
-        ]
-      },
-    ])
+const addFriend=async () => {
+  showConfirmDialog({
+    title: '添加好友',
+    message: `<input id="custom-input" type="text" style="border: none; width: 100%; height: 100%; box-sizing: border-box; text-align: center;" placeholder="输入好友userId" />` ,
+    allowHtml: true,
+  }).then(async () => {
+    var inputValue=document.getElementById('custom-input').value;
+    if (inputValue) {
+      try {
+    const friendId=inputValue;
+    const response = await axios.post(`/api/user/${userId}/friends/${friendId}`,{
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log(response.data.message);
+    getUser();
+  } catch (error) {
+    console.error('添加失败',error);
+  }
+  getCardData();
+    } else {
+    }
+    document.getElementById('custom-input').value='';
+  }).catch(() => {
+    document.getElementById('custom-input').value='';
+  });
+
+};
 </script>
 
 <template>
@@ -96,19 +172,19 @@ const postsme = ref([
       <van-image class="avatar" round width="80px" height="80px" src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
       <div class="profile-info">
         <div class="username">
-          Chen
+          {{ userName }}
         </div>
-        <div class="id">账号：1134100956</div>
+        <div class="id">账号：{{ userId }}</div>
       </div>
     </div>
     <van-cell-group class="van-cell-group1">
-      <van-cell class="van-cell1" title="1" label="获赞"/>
-      <van-cell class="van-cell1" title="27" label="发布"/>
-      <van-cell class="van-cell1" title="144" label="奖牌"/>
-      <van-cell class="van-cell1" title="28" label="朋友"/>
+      <van-cell class="van-cell1" :title=likeNum label="获赞"/>
+      <van-cell class="van-cell1" :title=postNum label="发布"/>
+      <van-cell class="van-cell1" :title=dayNum label="打卡"/>
+      <van-cell class="van-cell1" :title=friendNum label="朋友" @click="addFriend"/>
     </van-cell-group>
     <van-collapse v-model="activeNames">
-      <van-collapse-item title="个人介绍" name="1">这个人很懒，没有介绍......</van-collapse-item>
+      <van-collapse-item title="个人介绍" name="1">{{introduce}}</van-collapse-item>
     </van-collapse>
     <van-tabs v-model:active="activeTab" class="tabs">
       <van-tab title="发布">
