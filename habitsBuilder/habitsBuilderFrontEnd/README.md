@@ -1,7 +1,17 @@
-# Vue 3 + Vite
+# FrontEnd
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 设置docker
 
-## Recommended IDE Setup
+```
+# 进入目标目录
+cd ./habitsBuilderFrontEnd
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+# 在当前目录下进行docker的构建
+docker build -t frontend .
+
+# 启动容器
+docker run -p 5173:5173 frontend
+
+
+```
+
