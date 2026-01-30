@@ -1,17 +1,20 @@
-# 使用官方 Node 镜像
+# Use official Node image
 FROM node:20-alpine
 
-# 设置工作目录
+# Set working directory
 WORKDIR /app
 
-# 先复制依赖文件，利用 Docker 缓存加快构建
+# Copy dependency files first (for Docker cache)
 COPY package.json package-lock.json ./
 
-# 安装依赖
+# Install dependencies
 RUN npm ci
 
-# 复制整个项目代码
+# Copy entire project
 COPY . .
 
-# 启动开发服务器
-CMD ["npm", "run", "dev", "--", "--host"]
+# Expose Vite dev server port
+EXPOSE 5173
+
+# Start dev server with host flag to allow external access
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

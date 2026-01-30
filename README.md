@@ -312,7 +312,60 @@ Base URL: `/api`
 
 ---
 
-## 🚀 Setup & Development
+## 🐳 Quick Start with Docker (Recommended)
+
+**You don't need to install .NET, Node.js, or MySQL!** Everything runs in Docker containers.
+
+### Prerequisites
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or Docker Engine + Docker Compose)
+
+### Start the Application
+
+```bash
+# Clone or navigate to the project folder
+cd Habit-Builders
+
+# Start all services (MySQL + Backend + Frontend)
+docker-compose up --build
+
+# Wait for the build to complete, then open:
+# Frontend: http://localhost:5173
+# Backend API: http://localhost:5000
+# Swagger UI: http://localhost:5000/swagger
+```
+
+### Stop the Application
+
+```bash
+# Press Ctrl+C to stop, or in another terminal:
+docker-compose down
+
+# To also delete the database data:
+docker-compose down -v
+```
+
+### Useful Docker Commands
+
+```bash
+# View logs
+docker-compose logs -f
+
+# View specific service logs
+docker-compose logs -f backend
+docker-compose logs -f frontend
+docker-compose logs -f mysql
+
+# Restart a specific service
+docker-compose restart backend
+
+# Rebuild everything from scratch
+docker-compose down -v
+docker-compose up --build
+```
+
+---
+
+## 🚀 Setup & Development (Without Docker)
 
 ### Prerequisites
 - .NET 8.0 SDK
