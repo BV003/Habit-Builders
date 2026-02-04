@@ -19,16 +19,22 @@ namespace habitsBuilderBackEnd.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<UserDTO>> RegisterUser(User user)
+        public async Task<ActionResult<object>> RegisterUser(User user)
         {
             if (user == null)
             {
-                return BadRequest("User cannot be null");
+                return Ok(new { success = false, message = "用户数据不能为空" });
             }
 
-            var createdUser = await userService.RegisterUserAsync(user);
+            var (createdUser, message) = await userService.RegisterUserAsync(user);
+            
+            if (createdUser == null)
+            {
+                return Ok(new { success = false, message });
+            }
+
             var userDTO = await userService.GetUserDTOAsync(createdUser.UserId);
-            return CreatedAtAction(nameof(GetUser), new { id = userDTO.UserId }, userDTO);
+            return Ok(new { success = true, message, data = userDTO });
         }
 
         [HttpGet("{id}")]

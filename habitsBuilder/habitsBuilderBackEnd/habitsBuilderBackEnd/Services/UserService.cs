@@ -2,6 +2,8 @@
 using habitsBuilderBackEnd.Models;
 using habitsBuilderBackEnd.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace habitsBuilderBackEnd.Services
 {
@@ -14,11 +16,53 @@ namespace habitsBuilderBackEnd.Services
             _context = context;
         }
 
-        public async Task<User> RegisterUserAsync(User user)
+        public async Task<(User? User, string Message)> RegisterUserAsync(User user)
         {
+            // Input validation
+            if (string.IsNullOrWhiteSpace(user.UserId))
+            {
+                return (null, "用户名不能为空");
+            }
+            if (string.IsNullOrWhiteSpace(user.UserName))
+            {
+                return (null, "昵称不能为空");
+            }
+            if (string.IsNullOrWhiteSpace(user.Password))
+            {
+                return (null, "密码不能为空");
+            }
+            if (user.Password.Length < 6)
+            {
+                return (null, "密码长度不能少于6位");
+            }
+
+            // Check for duplicate user
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.UserId == user.UserId);
+            if (existingUser != null)
+            {
+                return (null, "用户名已存在");
+            }
+
+            // Hash the password before saving
+            user.Password = HashPassword(user.Password);
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-            return user;
+            return (user, "注册成功");
+        }
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
 
         public async Task<User> GetUserAsync(string userId)
@@ -33,7 +77,7 @@ namespace habitsBuilderBackEnd.Services
             var user = await _context.Users.FindAsync(userId);
             if (user != null)
             {
-                user.Password = newPassword;
+                user.Password = HashPassword(newPassword);
                 await _context.SaveChangesAsync();
             }
             return user;
@@ -91,9 +135,10 @@ namespace habitsBuilderBackEnd.Services
         }
         public async Task<User> ValidateUserAsync(string userId, string password)
         {
-            // 使用哈希函数或其他方法验证密码
+            // Hash the input password and compare with stored hash
+            string hashedPassword = HashPassword(password);
             var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.UserId == userId && u.Password == password);
+                .FirstOrDefaultAsync(u => u.UserId == userId && u.Password == hashedPassword);
 
             return user;
         }

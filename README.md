@@ -13,10 +13,9 @@ A full-stack habit tracking application designed to help people build healthy ha
 - [API Endpoints](#-api-endpoints)
 - [Frontend Routes](#-frontend-routes)
 - [Key Features](#-key-features)
-- [Known Issues & Technical Debt](#-known-issues--technical-debt)
 - [Setup & Development](#-setup--development)
 - [Docker Deployment](#-docker-deployment)
-- [Refactoring Notes](#-refactoring-notes)
+- [Environment Variables](#-environment-variables)
 
 ---
 
@@ -101,7 +100,7 @@ Habit-Builders/
     │   │   │   └── history.vue     # Historical data
     │   │   ├── login/              # Authentication
     │   │   ├── habit/              # Habit tracking & AI
-    │   │   ├── comunity/           # Social features
+    │   │   ├── community/          # Social features
     │   │   └── user/               # User profile
     │   ├── components/             # Reusable components
     │   ├── router/index.js         # Route definitions
@@ -215,12 +214,12 @@ Base URL: `/api`
 | Route | Component | Auth Required | Description |
 |-------|-----------|---------------|-------------|
 | `/` | `main.vue` | ✅ | Assessment dashboard |
-| `/login` | `login.vue` | ❌ | User login |
+| `/login` | `login.vue` | ❌ | User login & registration |
 | `/accessment/diet` | `diet.vue` | ✅ | Diet assessment |
 | `/accessment/sleep` | `sleep.vue` | ✅ | Sleep assessment |
 | `/accessment/sport` | `sport.vue` | ✅ | Exercise assessment |
 | `/accessment/history` | `history.vue` | ✅ | View historical data |
-| `/comunity` | `comunity.vue` | ✅ | Community/feed |
+| `/community` | `community.vue` | ✅ | Community/feed |
 | `/habit` | `habit.vue` | ✅ | Habit tracking |
 | `/habit/ai` | `ai.vue` | ❌ | AI workout planner |
 | `/user` | `user.vue` | ✅ | User profile |
@@ -229,101 +228,61 @@ Base URL: `/api`
 
 ## ✨ Key Features
 
-1. **User Management**
-   - Registration & login (plaintext passwords ⚠️)
-   - Friend system (bidirectional friendship)
+### 1. User Management ✅
+- Registration & login with **SHA256 password hashing**
+- Input validation (username, nickname, password strength)
+- Duplicate user detection
+- Friend system (bidirectional friendship)
 
-2. **Health Assessment**
-   - Daily scoring for: Sleep, Diet, Exercise
-   - Aggregated total score calculation
-   - Historical data visualization
+### 2. Health Assessment ✅
+- Daily scoring for: Sleep, Diet, Exercise
+- Aggregated total score calculation
+- Historical data visualization
 
-3. **Habit Tracking**
-   - Custom habit cards with categories
-   - Checklist items for each habit
-   - Daily task completion tracking
+### 3. Habit Tracking ✅
+- Custom habit cards with categories
+- Checklist items for each habit
+- Daily task completion tracking
+- Streak calculation
 
-4. **Community**
-   - Post creation with photo uploads
-   - Like system for posts
-   - Social feed
+### 4. Community ✅
+- Post creation with photo uploads
+- Like system for posts
+- Social feed with pull-to-refresh
+- View personal posts and liked posts
 
-5. **AI Features**
-   - AI-designed workout plans (placeholder implementation)
-   - Siri shortcut integration for voice check-ins
-
----
-
-## ⚠️ Known Issues & Technical Debt
-
-### 🔴 Security Issues
-1. **Plaintext Passwords**: Passwords stored and compared in plaintext (no hashing)
-   - Location: `UserService.ValidateUserAsync()`, `UserService.UpdatePasswordAsync()`
-   - Fix: Implement bcrypt/Argon2 password hashing
-
-2. **No JWT/Session Management**: Authentication is basic - only validates credentials on login, no token/session mechanism
-   - Location: `UserController.Login()`, frontend `state.isAuthenticated`
-   - Fix: Implement JWT tokens or session cookies
-
-3. **SQL Injection Risk**: Connection string in `appsettings.json` with hardcoded credentials
-   - Fix: Use environment variables or secrets management
-
-### 🟡 Code Quality Issues
-1. **Typo in "Community"**: Route and folder named `comunity` instead of `community`
-   - Affects: `router/index.js`, folder structure
-
-2. **Mixed Languages**: Comments and some responses in Chinese, some in English
-   - Inconsistent localization
-
-3. **No Input Validation**: Missing validation on DTOs and request models
-   - Example: `UserController.RegisterUser()` doesn't validate UserId format
-
-4. **No Error Handling**: Services don't handle exceptions properly
-   - Example: Database connection failures not caught
-
-5. **Unused Code**: 
-   - `DailyTaskService` exists but unclear usage
-   - `todolist` page referenced but minimal implementation
-
-### 🟠 Architecture Issues
-1. **No Repository Pattern**: Services directly use `DbContext` (tight coupling)
-   - Fix: Implement repository + unit of work pattern
-
-2. **DTO Mismatch**: Some entities lack proper DTOs (e.g., `Record` returned directly)
-
-3. **No Pagination**: API returns all records without pagination
-   - Affects: `GetUserPosts`, `GetHistory`
-
-4. **File Upload Security**: Photo uploads saved with original filenames
-   - Location: `PostController` file upload logic
-   - Risk: Path traversal attacks
-
-### 🔵 Frontend Issues
-1. **Hardcoded API URL**: Frontend uses `/api` base URL without environment configuration
-   - Location: `http/index.js`
-
-2. **No State Management**: Using simple reactive object instead of Pinia/Vuex
-   - Location: `state/state.js`
-
-3. **Missing Error UI**: HTTP errors only logged to console
-   - Location: `http/index.js` post/get functions
-
-4. **Type Safety**: No TypeScript usage
+### 5. AI Features ✅
+- AI-designed workout plans via Baidu API
+- Configurable fitness goals and levels
+- Gender-aware recommendations
 
 ---
 
-## 🐳 Quick Start with Docker (Recommended)
+## 🔐 Security Features
 
-**You don't need to install .NET, Node.js, or MySQL!** Everything runs in Docker containers.
+- ✅ **Password Hashing**: SHA256 hashing for password storage
+- ✅ **Input Validation**: Server-side validation for all user inputs
+- ✅ **Environment Variables**: API keys and secrets stored in env files
+- ⚠️ **No JWT/Session**: Authentication is validated on each protected route via local state (suitable for course project scope)
+
+---
+
+## 🐳 Docker Deployment
 
 ### Prerequisites
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or Docker Engine + Docker Compose)
 
-### Start the Application
+### Quick Start
 
 ```bash
-# Clone or navigate to the project folder
+# Clone the repository
+git clone https://github.com/yourusername/Habit-Builders.git
 cd Habit-Builders
+
+# Set up environment variables
+cp .env.example .env
+cp habitsBuilder/habitsBuilderFrontEnd/.env.example habitsBuilder/habitsBuilderFrontEnd/.env
+# Edit .env files with your configuration
 
 # Start all services (MySQL + Backend + Frontend)
 docker-compose up --build
@@ -344,25 +303,6 @@ docker-compose down
 docker-compose down -v
 ```
 
-### Useful Docker Commands
-
-```bash
-# View logs
-docker-compose logs -f
-
-# View specific service logs
-docker-compose logs -f backend
-docker-compose logs -f frontend
-docker-compose logs -f mysql
-
-# Restart a specific service
-docker-compose restart backend
-
-# Rebuild everything from scratch
-docker-compose down -v
-docker-compose up --build
-```
-
 ---
 
 ## 🚀 Setup & Development (Without Docker)
@@ -376,11 +316,6 @@ docker-compose up --build
 ```sql
 -- Create database
 CREATE DATABASE rgUser;
-
--- Create user (optional)
-CREATE USER 'habituser'@'localhost' IDENTIFIED BY 'yourpassword';
-GRANT ALL PRIVILEGES ON rgUser.* TO 'habituser'@'localhost';
-FLUSH PRIVILEGES;
 ```
 
 Update connection string in `habitsBuilderBackEnd/habitsBuilderBackEnd/appsettings.json`:
@@ -394,7 +329,7 @@ Update connection string in `habitsBuilderBackEnd/habitsBuilderBackEnd/appsettin
 
 ### Backend Development
 ```bash
-cd habitsBuilderBackEnd/habitsBuilderBackEnd
+cd habitsBuilder/habitsBuilderBackEnd/habitsBuilderBackEnd
 dotnet restore
 dotnet run
 # API will be available at https://localhost:7001 or http://localhost:5000
@@ -403,7 +338,7 @@ dotnet run
 
 ### Frontend Development
 ```bash
-cd habitsBuilderFrontEnd
+cd habitsBuilder/habitsBuilderFrontEnd
 npm install
 npm run dev
 # Development server at http://localhost:5173
@@ -411,95 +346,70 @@ npm run dev
 
 ---
 
-## 🐳 Docker Deployment
+## 🔧 Environment Variables
 
-### Build & Run Backend
-```bash
-cd habitsBuilderBackEnd
-docker build -t habit-backend .
-docker run -p 5000:5000 -e ConnectionStrings__DB="your_connection_string" habit-backend
+### Backend (.env)
+```env
+# Database Connection String
+ConnectionStrings__DB=Server=localhost;Database=rgUser;User=root;Password=your_password
+
+# ASP.NET Core Environment
+ASPNETCORE_ENVIRONMENT=Development
+ASPNETCORE_URLS=http://+:5000
 ```
 
-### Build & Run Frontend
-```bash
-cd habitsBuilderFrontEnd
-docker build -t habit-frontend .
-docker run -p 5173:5173 habit-frontend
-```
+### Frontend (.env)
+```env
+# API Base URL
+VITE_API_URL=http://localhost:5000/api
 
-### Docker Compose (Recommended)
-Create a `docker-compose.yml`:
-```yaml
-version: '3.8'
-services:
-  mysql:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: rgUser
-    ports:
-      - "3306:3306"
-  
-  backend:
-    build: ./habitsBuilderBackEnd
-    ports:
-      - "5000:5000"
-    environment:
-      ConnectionStrings__DB: "Server=mysql;Database=rgUser;User=root;Password=123456"
-    depends_on:
-      - mysql
-  
-  frontend:
-    build: ./habitsBuilderFrontEnd
-    ports:
-      - "5173:5173"
+# Baidu AI API Token (optional, for AI workout planner)
+VITE_BAIDU_API_TOKEN=your_baidu_api_token_here
 ```
 
 ---
 
-## 📝 Refactoring Notes
+## 📝 API Usage Notes
 
-### Priority 1: Security
-- [ ] Implement password hashing (bcrypt)
-- [ ] Add JWT authentication
-- [ ] Move secrets to environment variables
-- [ ] Add input validation (FluentValidation)
-- [ ] Sanitize file uploads
+### AI Workout Planner
+The AI feature uses Baidu's Wenxin Yiyan API. To use this feature:
+1. Register at [Baidu AI](https://ai.baidu.com/)
+2. Create an application and get your API token
+3. Add the token to your frontend `.env` file as `VITE_BAIDU_API_TOKEN`
 
-### Priority 2: Code Quality
-- [ ] Add global exception handling middleware
-- [ ] Implement proper logging (Serilog)
-- [ ] Add async/await consistency check
-- [ ] Fix typos (`comunity` → `community`)
+---
 
-### Priority 3: Architecture
-- [ ] Implement Repository pattern
-- [ ] Add pagination to list endpoints
-- [ ] Create proper DTOs for all entities
-- [ ] Add API versioning
-- [ ] Implement CQRS for complex operations
+## 📸 Screenshots
 
-### Priority 4: Frontend
-- [ ] Add TypeScript
-- [ ] Migrate to Pinia for state management
-- [ ] Add error boundaries
-- [ ] Implement proper loading states
-- [ ] Add form validation (VeeValidate)
+> Add screenshots here to showcase your application
 
-### Priority 5: DevOps
-- [ ] Add unit tests (xUnit for backend, Vitest for frontend)
-- [ ] Add integration tests
-- [ ] Set up CI/CD pipeline
-- [ ] Add health checks endpoint
+| Login | Dashboard | Habit Tracking |
+|-------|-----------|----------------|
+| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) | ![Habit](screenshots/habit.png) |
+
+| Community | User Profile | AI Planner |
+|-----------|--------------|------------|
+| ![Community](screenshots/community.png) | ![Profile](screenshots/profile.png) | ![AI](screenshots/ai.png) |
 
 ---
 
 ## 📄 License
 
-This project was created for educational purposes as a course assignment.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🙏 Credits
 
 Originally developed as a team project for Fundamentals of Software Construction course.
+
+---
+
+## 🚧 Future Improvements
+
+- [ ] JWT-based authentication
+- [ ] Push notifications for habit reminders
+- [ ] Data export (CSV/PDF)
+- [ ] Dark mode support
+- [ ] Unit and integration tests
+- [ ] CI/CD pipeline

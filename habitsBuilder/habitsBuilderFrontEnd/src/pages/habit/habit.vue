@@ -15,27 +15,17 @@ onMounted(() => {
   getCardData();
 });
 const show = ref(false);
-// const cards = ref([
-//   { id:0,description: '跑步5公里', category: '类型1', checklist: ['晨跑30分钟', '早餐-牛油果三明治', '对接商务工作'],checklistStatus:[false,false,false],checkDays:[0,0,0]},
-//   { id:0,description: '阅读1小时', category: '类型2', checklist: ['阅读小说', '阅读技术书籍'],checklistStatus:[false,false],checkDays:[0,0]},
-//   { id:0,description: '冥想30分钟', category: '类型3', checklist: ['冥想呼吸练习', '冥想放松身体'],checklistStatus:[false,false],checkDays:[0,0]},
-//   { id:0,description: '喝水8杯', category: '类型4', checklist: ['喝水1杯', '喝水2杯', '喝水3杯', '喝水4杯'],checklistStatus:[false,false,false,false],checkDays:[0,0,0,0]},
-//
-// ]);
 const cards = ref([]);
 
-//未打卡条目数量计算
 const uncheckedCounts = computed(() => {
   return cards.value.map(card => card.checklistStatus.filter(status => !status).length);
 });
-//最长打卡天数计算
 const maxCheckedDays = computed(() => {
       return cards.value.map(card => {
         return card.checkDays.length > 0 ? Math.max(...card.checkDays) : 0;
       });
     });
 
-//删除卡片
 const removeCard = async (index) => {
   try {
     const deleteCardData ={
@@ -48,14 +38,11 @@ const removeCard = async (index) => {
       },
     data: deleteCardData
     });
-    console.log(response.data.message);
-
   } catch (error) {
     console.error('删除失败',error);
   }
   getCardData();
 };
-//添加条目
 const addItem = async (cardIndex) => {
   showConfirmDialog({
     title: '添加打卡',
@@ -63,7 +50,6 @@ const addItem = async (cardIndex) => {
     allowHtml: true,
   }).then(async () => {
     var inputValue=document.getElementById('custom-input').value;
-    console.log(inputValue);
     if (inputValue) {
       try {
     const addItemData ={
@@ -76,8 +62,6 @@ const addItem = async (cardIndex) => {
         'Content-Type': 'application/json'
       }
     });
-    console.log(response.data.message);
-
   } catch (error) {
     console.error('添加失败',error);
   }
@@ -91,7 +75,6 @@ const addItem = async (cardIndex) => {
 
 };
 
-//删除条目
 const removeItem = async (cardIndex, itemIndex) => {
   try{
     const deleteItemData ={
@@ -105,8 +88,6 @@ const removeItem = async (cardIndex, itemIndex) => {
       },
     data: deleteItemData
     });
-    console.log(response.data.message);
-
   } catch (error) {
     console.error('删除失败',error);
   }
@@ -115,9 +96,7 @@ const removeItem = async (cardIndex, itemIndex) => {
 
 
 const onClick = () => {
-      console.log("onClick");
       show.value=true;
-      
     };
 const crossClick=()=>{
   
@@ -126,7 +105,6 @@ const crossClick=()=>{
   create_description.value = '';
 }
 
-//创建卡片
 const create_category = ref('');
 const create_description = ref('');
 const onSubmit = async () => {
@@ -142,8 +120,6 @@ const onSubmit = async () => {
         'Content-Type': 'application/json'
       }
     });
-    console.log(response.data.message);
-
   } catch (error) {
     console.error('添加失败',error);
   }
@@ -153,7 +129,6 @@ const onSubmit = async () => {
   create_description.value = '';
 };
 
-//打卡事件
 const checkCard=async (cardIndex,index)=> {
   try {
     const checkData ={
@@ -166,7 +141,6 @@ const checkCard=async (cardIndex,index)=> {
         'Content-Type': 'application/json'
       }
     });
-    console.log(response.data.message);
   } catch (error) {
     console.error('添加失败',error);
   }
@@ -174,11 +148,9 @@ const checkCard=async (cardIndex,index)=> {
 };
 
 
-//获取数据
 const getCardData = async () => {
   try {
     const response = await axios.get(`/api/card/${state.user.userId}`);
-    console.log(response.data);
     cards.value=response.data;
   } catch (error) {
     console.error('获取失败',error);

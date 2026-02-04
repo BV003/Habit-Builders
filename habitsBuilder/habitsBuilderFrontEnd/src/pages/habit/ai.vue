@@ -16,8 +16,6 @@
       :rules="[{ required: true, message: '你的健身目标是什么' }]"
     />
 
-
-
     <van-field name="radio" label="性别">
   <template #input>
     <van-radio-group v-model="gender" direction="horizontal">
@@ -71,31 +69,30 @@
     <p style="margin:0; white-space:pre-wrap">{{ans}}</p>
 </div>
 
-
 </template>
 
 <style>
     .exercise-plan-generator {
-        text-align: center; /* 文本居中对齐 */
-        margin: 20px; /* 外边距 */
-        padding: 20px; /* 内边距 */
-        border: 1px solid #ddd; /* 边框 */
-        border-radius: 8px; /* 边框圆角 */
-        background-color: #f9f9f9; /* 背景颜色 */
+        text-align: center;
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
     }
 
     .exercise-plan-generator h1 {
-        color: #333; /* 字体颜色 */
-        font-size: 24px; /* 字体大小 */
+        color: #333;
+        font-size: 24px;
     }
 
     .exercise-plan-generator p {
-        color: #666; /* 字体颜色 */
-        font-size: 16px; /* 字体大小 */
+        color: #666;
+        font-size: 16px;
     }
 </style>
 <script>
-import { ref,onMounted } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
 
 export default {
@@ -110,7 +107,7 @@ export default {
     const onClickLeft = () => history.back();
     const updateQuery = () => {
 
-      query.value = ''; // 重置消息
+      query.value = '';
       query.value += '我的目标是';
       query.value += goal.value;
       query.value += ',';
@@ -152,21 +149,24 @@ export default {
     };
 
     const postbaidu = () => {
-        console.log('开始发送数据到百度...');
         ans.value='正在生成中，请耐心等候';
         updateQuery();
+        // Note: To use this feature, you need to set VITE_BAIDU_API_TOKEN in your .env file
+        const token = import.meta.env.VITE_BAIDU_API_TOKEN || '';
+        if (!token) {
+          ans.value = '请配置百度API Token环境变量 (VITE_BAIDU_API_TOKEN)';
+          return;
+        }
         const url = 'https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions';
-    axios.post(url, { messages:[ {"role": "user","content": query.value}]}, {
-        params: { access_token:'24.ad2520a282f8289fc05f4e0d343b5c95.2592000.1719998817.282335-77974807' }
-  })
-  .then(response => {
-    ans.value=response.data.result;
-    console.log('请求成功:', response.data.result);
-  })
-  .catch(error => {
-    
-    console.error('请求失败:', error);
-  });
+        axios.post(url, { messages:[ {"role": "user","content": query.value}]}, {
+            params: { access_token: token }
+        })
+        .then(response => {
+          ans.value=response.data.result;
+        })
+        .catch(() => {
+          ans.value = '请求失败，请检查API Token是否有效';
+        });
 
     };
 

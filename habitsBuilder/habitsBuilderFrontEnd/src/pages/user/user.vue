@@ -13,7 +13,6 @@ const onEditProfile=()=> {
     allowHtml: true,
   }).then(() => {
     var inputValue=document.getElementById('custom-input').value;
-    console.log(inputValue);
     if (inputValue) {
       introduce.value=inputValue;
       state.setIntroduce(inputValue);
@@ -32,14 +31,12 @@ const postsme = ref([]);
 const loadingMe = ref(false);
 const finishedMe = ref(false);
 const onLoadMe = () => {
-  console.log("onload");
   loadingMe.value = false;
   finishedMe.value = true;
 };
 const loadingLike = ref(false);
 const finishedLike = ref(false);
 const onLoadLike = () => {
-  console.log("onload");
   loadingLike.value = false;
   finishedLike.value = true;
 };
@@ -80,7 +77,6 @@ const getPostsme = async () => {
     const response = await axios.get(`/api/posts/${userId}/posts`);
     if (response.data.hasOwnProperty('message')) {
     }else{
-      console.log(response.data);
       const fetchedPosts = response.data.map(post => ({
       postId: post.postId,
       imgsrc: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg', // 默认图片
@@ -92,8 +88,8 @@ const getPostsme = async () => {
     }));
     postsme.value = fetchedPosts;
     }
-  } catch (error) {
-    console.log('Failed to fetch posts:');
+  } catch {
+    // Error handled silently
   }
 };
 const getPostslike = async () => {
@@ -117,11 +113,9 @@ const getPostslike = async () => {
     console.log('Failed to fetch posts:');
   }
 };
-//获取数据
 const getCardData = async () => {
   try {
     const response = await axios.get(`/api/card/${state.user.userId}`);
-    console.log(response.data);
     cards.value=response.data;
   } catch (error) {
     console.error('获取失败',error);
@@ -143,7 +137,6 @@ const addFriend=async () => {
         'Content-Type': 'application/json'
       }
     });
-    console.log(response.data.message);
     getUser();
   } catch (error) {
     console.error('添加失败',error);
@@ -200,18 +193,6 @@ const addFriend=async () => {
           </van-list>
         </div>
       </van-tab>
-      <!--<van-tab title="奖牌">
-        <div class="tab-content">
-           奖牌内容 
-        </div>
-      </van-tab>-->
-<!--
-      <van-tab title="打卡">
-        <div class="tab-content">
-        </div>
-      </van-tab>-->
-
-
       <van-tab title="喜欢">
         <div class="tab-content">
           <van-list

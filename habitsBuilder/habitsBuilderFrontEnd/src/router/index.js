@@ -34,9 +34,9 @@ const routes=[
     },
     
     {
-        path:"/comunity",
-        name:"comunity",
-        component: () => import("../pages/comunity/comunity.vue"),
+        path:"/community",
+        name:"community",
+        component: () => import("../pages/community/community.vue"),
         meta: { requiresAuth: true },
 
     },

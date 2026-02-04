@@ -15,7 +15,6 @@ import { state } from '../../state/state.js';
     const posts = ref([]);
 
     const onLoad = () => {
-      console.log("onload");
       if (refreshing.value) {
           posts.value = [];
           refreshing.value = false;
@@ -35,7 +34,6 @@ import { state } from '../../state/state.js';
     const response = await axios.get(`/api/posts/${userId}/allposts`);
     if (response.data.hasOwnProperty('message')) {
     }else{
-      console.log(response.data);
       const fetchedPosts = response.data.map(post => ({
       postId: post.postId,
       imgsrc: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg', // 默认图片
@@ -47,12 +45,11 @@ import { state } from '../../state/state.js';
     }));
     posts.value = fetchedPosts;
     }
-  } catch (error) {
-    console.log('Failed to fetch posts:');
+  } catch {
+    // Error handled silently
   }
 };
     const onClick = () => {
-      console.log("onClick");
       show.value=true;
     };
 
@@ -78,12 +75,9 @@ const onPublish = async () => {
   try {
     const formData = new FormData();
     formData.append('content', newPostData.content);
-    newPostData.photos.forEach((photo, index) => {
+    newPostData.photos.forEach((photo) => {
       formData.append(`files`, photo);
     });
-    for (let [key, value] of formData.entries()) {
-    console.log(key, value);
-  }
     const response = await axios.post(`/api/posts/${userId}/posts`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -94,8 +88,8 @@ const onPublish = async () => {
   fileList.value=[];
   show.value = false; // 关闭 Action Sheet
   onLoad();
-}catch(error){
-  console.log(error);
+}catch{
+  // Error handled silently
 }
 }
 
