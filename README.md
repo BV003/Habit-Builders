@@ -387,9 +387,9 @@ The AI feature uses Baidu's Wenxin Yiyan API. To use this feature:
 |-------|-----------|----------------|
 | ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) | ![Habit](screenshots/habit.png) |
 
-| Community | User Profile | AI Planner |
-|-----------|--------------|------------|
-| ![Community](screenshots/community.png) | ![Profile](screenshots/profile.png) | ![AI](screenshots/ai.png) |
+| User Profile |
+|--------------|
+| ![Profile](screenshots/profile.png) |
 
 ---
 
